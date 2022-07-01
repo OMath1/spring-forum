@@ -1,15 +1,20 @@
-package com.example.forum.controller;
+package com.example.forum.controller.dto;
 
 import com.example.forum.modelo.Topico;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Getter
+@NoArgsConstructor
 public class TopicoDto {
+
     private Long id;
     private String titulo;
     private String mensagem;
@@ -23,9 +28,13 @@ public class TopicoDto {
     }
 
     public static List<TopicoDto> paraTopico(List<Topico> topico) {
+        // Lista de topicos recebida no param
         return topico
+                // retornando o fluxo de dados sem precisar iterar manualmente
                 .stream()
+                // mapeando o fluxo de TopicoDto vindo do topico
                 .map(TopicoDto::new)
+                // transforma em uma collection e passa pra lista
                 .collect(Collectors.toList());
     }
 }
