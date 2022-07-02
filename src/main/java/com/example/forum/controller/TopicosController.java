@@ -1,5 +1,6 @@
 package com.example.forum.controller;
 
+import com.example.forum.controller.dto.DetalhesTopicoDto;
 import com.example.forum.controller.dto.TopicoDto;
 import com.example.forum.controller.dto.TopicoForm;
 import com.example.forum.modelo.Curso;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 
@@ -55,6 +57,8 @@ public class TopicosController {
     //@RequestBody liga o parametro da requisiçao com o parametro do metodo
     public ResponseEntity<TopicoDto> cadastrar(
             @RequestBody
+            // Avisa ao spring que deve rodar as validaçoes no bean validation
+            @Valid
             TopicoForm form,
             UriComponentsBuilder uriComponentsBuilder
     ) {
@@ -70,9 +74,9 @@ public class TopicosController {
 
 
     @GetMapping("/{id}")
-    public ResponseEntity<TopicoDto> detalhar(@PathVariable Long id) {
+    public ResponseEntity<DetalhesTopicoDto> detalhar(@PathVariable Long id) {
         Topico topico = topicoRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-        return ResponseEntity.ok(new TopicoDto(topico));
+        return ResponseEntity.ok(new DetalhesTopicoDto(topico));
     }
 }

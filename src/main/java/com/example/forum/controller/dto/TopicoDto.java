@@ -14,7 +14,6 @@ import java.util.stream.Collectors;
 @Getter
 @NoArgsConstructor
 public class TopicoDto {
-
     private Long id;
     private String titulo;
     private String mensagem;
