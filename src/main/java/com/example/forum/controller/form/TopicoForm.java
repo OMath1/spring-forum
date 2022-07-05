@@ -1,4 +1,4 @@
-package com.example.forum.controller.dto;
+package com.example.forum.controller.form;
 
 import com.example.forum.modelo.Curso;
 import com.example.forum.modelo.Topico;

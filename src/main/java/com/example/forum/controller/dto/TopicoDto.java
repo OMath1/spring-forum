@@ -1,5 +1,6 @@
 package com.example.forum.controller.dto;
 
+import com.example.forum.controller.form.AtualizacaoTopicoForm;
 import com.example.forum.modelo.Topico;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,6 +25,11 @@ public class TopicoDto {
         this.titulo = topico.getTitulo();
         this.mensagem = topico.getMensagem();
         this.dataCriacao = topico.getDataCriacao();
+    }
+
+    public TopicoDto(AtualizacaoTopicoForm topico) {
+        this.titulo = topico.getTitulo();
+        this.mensagem = topico.getMensagem();
     }
 
     public static List<TopicoDto> paraTopico(List<Topico> topico) {

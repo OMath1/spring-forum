@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import java.util.ArrayList;
 import java.util.List;
 
+// CLASSE RESPONSAVEL POR: listar os erros e traze-los na linguagem padrao
 @RestControllerAdvice
 public class ErroDeValidacaoHandler {
 
